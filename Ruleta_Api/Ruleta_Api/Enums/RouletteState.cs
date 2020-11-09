@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Ruleta_Api.Enums {
-    public enum BetBoardState {
+    public enum RouletteState {
         _none,
-        opend,
-        finished,
-        canceled,
-        calculating_winner
+        on_playing,
+        waiting,
+        calculating_winner,
     }
 }
