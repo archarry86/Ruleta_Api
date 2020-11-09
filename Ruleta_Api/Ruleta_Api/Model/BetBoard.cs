@@ -15,6 +15,7 @@ namespace Ruleta_Api.Model {
         public DateTime CreationDate { get; private set; }
         public DateTime? FinalizationDate { get; private set; }
         public DateTime? CancelationDate { get; private set; }
+        public Bet winner { get; private set; }
         //Structure to manage the concurrence
         private ConcurrentDictionary<String,Bet> Bets;
         public BetBoard(Roulette _roulette, Guid id) {
@@ -32,7 +33,7 @@ namespace Ruleta_Api.Model {
         public BetBoard(Roulette roulette) : this(roulette, Guid.NewGuid()) { 
         
         }
-        public bool AddBet(Bet newBet,String PlayerId) {
+        public bool AddBet(Bet newBet) {
             bool result = false;
             if(State != BetBoardState.opend) {
                 //this message should be on a lang file
@@ -47,7 +48,7 @@ namespace Ruleta_Api.Model {
                 throw new InvalidOperationException("The Bet was alredy Played");
             }
             exits = true;
-            Bets.GetOrAdd(PlayerId, (string id)=>{
+            Bets.GetOrAdd(newBet.PlayerId, (string id)=>{
                 exits = false;
                 return newBet;
             });
@@ -57,23 +58,25 @@ namespace Ruleta_Api.Model {
             result = true;
             return result;
         }
-        public void CloseTheBoard() {
-            this.State = BetBoardState.finished;
-            Roulette.FinalizeGame();
-            this.FinalizationDate = DateTime.Now;
-        }
+      
         public void CancelTheBoard() {
             this.State = BetBoardState.canceled;
             Roulette.FinalizeGame();
             this.CancelationDate = DateTime.Now;
         }
-        public Bet BetPlayer( int number ) {
-            String result = "";
+        public Bet BetPlayerWinner( int number ) {
+            if(winner != null) {
+                throw new InvalidOperationException("The winner player has been already chossen");
+            }
+            if(this.State != BetBoardState.opend) {
+                throw new InvalidOperationException("The winner player has been already chossen");
+            }
+            this.State = BetBoardState.calculating_winner;
+            
             KeyValuePair<String, Bet> entry =  Bets.FirstOrDefault(P => P.Value.BetSelected.Number == number);
-            if(entry.Value != null)
-                return entry.Value;
-            else
-                return null;
+            winner = entry.Value;
+            this.State = BetBoardState.finished;
+            return winner;
         }
     }
 }
