@@ -129,6 +129,14 @@ namespace Ruleta_Api.Controllers
             try {
               var bet_winner=   RouletteModel.CloseRoulette(serial);
                 result = new ApiWrapperResponse<Bet>(bet_winner, bet_winner != null? 0 : 1);
+                if(bet_winner != null) { 
+                    //In this implementation you can only bet by the number and by the color.
+                    //so the amount of the player is increased by the values stated in the especification
+                    var winner_by_color = 1.8m;
+                    var winner_by_number = 5m;
+                    var new_amount =   bet_winner.BetAmount * winner_by_color + bet_winner.BetAmount * winner_by_number;
+                    RouletteModel.AddCreditToThePlayer(bet_winner.PlayerId,  new_amount);
+                }
             }
             catch(Exception ex) {
                 result = new ApiWrapperResponse<Bet>(1);

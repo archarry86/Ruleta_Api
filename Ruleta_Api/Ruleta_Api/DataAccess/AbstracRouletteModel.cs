@@ -17,6 +17,8 @@ namespace Ruleta_Api.DataAccess
         public abstract IEnumerable<Roulette> GetRoulettes();
         public abstract Dictionary<string,List<BetBoard>> GetRoulettesBoards();
         public abstract bool PlayerHasCredit(Bet bet);
-         
+
+        public abstract void AddCreditToThePlayer(string playerId, decimal new_amount);
+           
     }
 }

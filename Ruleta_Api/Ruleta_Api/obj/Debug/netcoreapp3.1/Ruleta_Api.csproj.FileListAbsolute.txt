@@ -1,7 +1,3 @@
-D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.AssemblyInfoInputs.cache
-D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.AssemblyInfo.cs
-D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.csproj.CoreCompileInputs.cache
-D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.MvcApplicationPartsAssemblyInfo.cache
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\appsettings.json
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -11,6 +7,10 @@ D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\R
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\Ruleta_Api.runtimeconfig.dev.json
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\Ruleta_Api.dll
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\bin\Debug\netcoreapp3.1\Ruleta_Api.pdb
+D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.AssemblyInfoInputs.cache
+D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.AssemblyInfo.cs
+D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.csproj.CoreCompileInputs.cache
+D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.MvcApplicationPartsAssemblyInfo.cache
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\Ruleta_Api.RazorTargetAssemblyInfo.cache
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\staticwebassets\Ruleta_Api.StaticWebAssets.Manifest.cache
 D:\DESARROLLO\netcore\Ruleta_Api\Ruleta_Api\Ruleta_Api\obj\Debug\netcoreapp3.1\staticwebassets\Ruleta_Api.StaticWebAssets.xml

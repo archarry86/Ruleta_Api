@@ -10,6 +10,10 @@ namespace Ruleta_Api.DataAccess {
             throw new NotImplementedException();
         }
 
+        public override void AddCreditToThePlayer(string playerId, decimal new_amount) {
+            throw new NotImplementedException();
+        }
+
         public override Bet CloseRoulette(string serial) {
             throw new NotImplementedException();
         }

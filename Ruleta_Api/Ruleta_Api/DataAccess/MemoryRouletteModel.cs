@@ -8,14 +8,20 @@ using System.Threading.Tasks;
 
 namespace Ruleta_Api.DataAccess {
     public class MemoryRouletteModel : AbstracRouletteModel {
-        private ConcurrentDictionary<String, Roulette> roulettes;
-        private ConcurrentDictionary<String, List< BetBoard>> boards;
-        private ConcurrentDictionary<String, Player> players;
+        private static volatile ConcurrentDictionary<String, Roulette> roulettes;
+        private static volatile ConcurrentDictionary<String, List< BetBoard>> boards;
+        private static volatile ConcurrentDictionary<String, Player> players;
         private static long counter = 0;
-        public MemoryRouletteModel():base() {
+
+        static MemoryRouletteModel() {
+
             roulettes = new ConcurrentDictionary<string, Roulette>();
             boards = new ConcurrentDictionary<string, List<BetBoard>>();
             players = new ConcurrentDictionary<string, Player>();
+        }
+
+        public MemoryRouletteModel():base() {
+          
             //some random players
             for(int index = 0; index < 30; index++) {
                 var random = new Random(Thread.CurrentThread.ManagedThreadId* (index+1));
@@ -67,13 +73,12 @@ namespace Ruleta_Api.DataAccess {
         }
         public override Dictionary<string, List<BetBoard>> GetRoulettesBoards() {
             //a copy avoid thread problems
-            return new Dictionary<string, List<BetBoard>>(this.boards);
+            return new Dictionary<string, List<BetBoard>>(boards);
         }
 
         public override bool AddBet(string serial, Bet bet) {
             var result = false;
             try {
-
                 Roulette Roulette = null;
                 if(roulettes.TryGetValue(serial, out Roulette)) {
                     var bet_board = Roulette.BetBoard;
@@ -96,6 +101,18 @@ namespace Ruleta_Api.DataAccess {
                result =  player.Credit >= bet.BetAmount;
             }
             return result;  
+        }
+
+        public override void AddCreditToThePlayer(string playerId, decimal new_amount) {
+            Player player = null;
+            if(players.TryGetValue(playerId,out player)) {
+                //newinstance the parameter is added if another Thread removed the player or 
+                Player newinstance = new Player(playerId, player.Credit + new_amount);
+                players.AddOrUpdate(playerId, newinstance, (string  id ,Player p) => {
+                    // return the new instance with the new Credit state
+                    return newinstance;
+                });
+            }
         }
     }
 }
